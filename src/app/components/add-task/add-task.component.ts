@@ -32,7 +32,7 @@ export class AddTaskComponent {
     }
 
     this.addUserForm.controls['isAdmin'].setValue(
-      this.selectedRole==='admin' ? true:false
+      this.selectedRole === 'admin' ? true:false
     )
     // @ts-ignore
     this.userService.addUser(this.addUserForm.value).subscribe(
