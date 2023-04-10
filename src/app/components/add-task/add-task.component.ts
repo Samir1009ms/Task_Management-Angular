@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { UserService } from "../../services/user.service";
 import { FormBuilder, Validators } from "@angular/forms";
 import { Router } from "@angular/router";
+import { TaskService } from "../../services/task.service";
+import { UserModel } from "../../models/user.model";
 
 @Component({
   selector: 'app-add-task',
@@ -9,36 +11,40 @@ import { Router } from "@angular/router";
   styleUrls: ['./add-task.component.scss']
 })
 export class AddTaskComponent {
-  role:string[]=['admin','user']
-  selectedRole:string =this.role[1]
+  users!: UserModel[];
+  selected: string = ''
+
   constructor(
-  private userService : UserService,
-  private fb:FormBuilder,
-  private router:Router
-  ) {}
+    private taskService: TaskService,
+    private userService: UserService,
+    private router: Router,
+    private fb: FormBuilder,
+  ) { }
 
-
-  addUserForm= this.fb.group({
-    name:['',Validators.required],
-    email:['',Validators.required],
-    password:['',Validators.required],
-    isAdmin:[false,Validators.required],
+  addTaskForm = this.fb.group({
+    title: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(20)]],
+    description: ['', [Validators.required, Validators.pattern('^[a-zA-Z0-9 ]*$')]],
+    assignedTo: ['', Validators.required],
   })
 
-  submitForm(){
+  ngOnInit() {
+    this.getUsers()
+  }
 
-    if(this.addUserForm.invalid){
+  getUsers() {
+    this.userService.getUsers().subscribe((users: UserModel[]) => {
+      this.users = users;
+    })
+  }
+
+  submitForm() {
+    if (this.addTaskForm.invalid ) {
       return;
     }
 
-    this.addUserForm.controls['isAdmin'].setValue(
-      this.selectedRole === 'admin' ? true:false
-    )
     // @ts-ignore
-    this.userService.addUser(this.addUserForm.value).subscribe(
-      res=>{
-        this.router.navigate([' /users'])
-      }
-    )
+    this.taskService.addTask(this.addTaskForm.value).subscribe(() => {
+      this.router.navigate(['/tasks'])
+    })
   }
 }

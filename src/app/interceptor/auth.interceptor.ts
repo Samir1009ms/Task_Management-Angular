@@ -12,7 +12,9 @@ import { AuthService } from "../services/auth.service";
 export class AuthInterceptor implements HttpInterceptor {
 
   constructor(private authService:AuthService) {}
-
+  fakeToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.' +
+    'eyJfaWQiOiI2NDAyZjVlZDRhMWUxOTVlMTdkOGU0YTkiLCJpc0FkbWluIjp0cnVlLCJpYXQiOjE2ODA0MjEwMjh9.' +
+    'CRna5jscHGHkEgcF-P2fhHPgvfcRYZ9we0MsdbtW66U'
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
     request=request.clone({
       headers: request.headers.set("authorization",this.authService.token)

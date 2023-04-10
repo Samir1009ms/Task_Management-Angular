@@ -1,45 +1,33 @@
-<form (ngSubmit)="submitForm()" [formGroup]="addUserForm" autocomplete="off">
+<form (ngSubmit)="submitForm()" [formGroup]="addTaskForm" autocomplete="off">
   <div style="display: flex; justify-content: center">
     <mat-card class="form-container">
-      <mat-card-title>Add user</mat-card-title>
+      <mat-card-title>Add task</mat-card-title>
 
-      <!-- Name -->
+      <!-- Title -->
       <div>
         <mat-form-field>
-          <mat-label>Name</mat-label>
-          <input matInput type="text" formControlName="name"  />
+          <mat-label>Title</mat-label>
+          <input matInput type="text" formControlName="title"  />
         </mat-form-field>
       </div>
-      <!-- /Name -->
 
-      <!-- Email -->
+      <!-- Description -->
       <div>
         <mat-form-field>
-          <mat-label>Email</mat-label>
-          <input matInput type="email" formControlName="email" />
+          <mat-label>Description</mat-label>
+          <input matInput type="text" formControlName="description" />
         </mat-form-field>
       </div>
-      <!-- /Email -->
 
-      <!-- Password -->
-      <div>
-        <mat-form-field>
-          <mat-label>Password</mat-label>
-          <input matInput type="password" formControlName="password" />
-        </mat-form-field>
-      </div>
-      <!-- /Password -->
-
-      <!-- Role -->
+      <!-- Assign to -->
       <mat-form-field appearance="fill">
-        <mat-label>Role</mat-label>
-        <mat-select formControlName="isAdmin" >
-          <mat-option *ngFor="let role of roles" [value]="role">
-            {{ role | titlecase }}
+        <mat-label>Assign to: </mat-label>
+        <mat-select formControlName="assignedTo" >
+          <mat-option *ngFor="let user of users" [value]="user._id">
+            {{ user.name | titlecase }}
           </mat-option>
         </mat-select>
       </mat-form-field>
-      <!-- /Role -->
 
       <div>
         <button type="submit" mat-raised-button color="primary">Add</button>

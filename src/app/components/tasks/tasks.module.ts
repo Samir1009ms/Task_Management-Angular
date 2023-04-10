@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { TasksRoutingModule } from './tasks-routing.module';
 import { TasksComponent } from './tasks.component';
+import { AngularMaterialModule } from "../../angular-material/angular-material.module";
 
 
 @NgModule({
@@ -11,7 +12,9 @@ import { TasksComponent } from './tasks.component';
   ],
   imports: [
     CommonModule,
-    TasksRoutingModule
+    TasksRoutingModule,
+    AngularMaterialModule
+
   ]
 })
 export class TasksModule { }

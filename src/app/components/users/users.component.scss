@@ -14,3 +14,21 @@ button a {
   padding: 10px 15px;
   text-decoration: none;
 }
+
+.mat-mdc-icon-button {
+  border-radius: 10px !important;
+  border: 1px solid red !important;
+  &:hover{
+    border-radius: 10px !important;
+    background-color: coral !important;
+  }
+
+
+
+}
+
+.mat-mdc-button-persistent-ripple {
+  border-radius: 10px !important;
+  border: 1px solid red !important;
+}
+

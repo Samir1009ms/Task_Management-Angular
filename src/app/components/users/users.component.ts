@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { UserService } from "../../services/user.service";
 import { UserModel } from "../../models/user.model";
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-users',
@@ -9,7 +10,7 @@ import { UserModel } from "../../models/user.model";
 })
 export class UsersComponent implements OnInit{
 users:UserModel[]=[]
-  constructor(private userServices:UserService) {
+  constructor(private userServices:UserService,private router:Router) {
   }
 
   ngOnInit() {
@@ -20,5 +21,9 @@ users:UserModel[]=[]
     this.userServices.getUsers().subscribe(res=>{
       this.users=res
     })
+  }
+
+  goLink(){
+    this.router.navigate(['/add-user'])
   }
 }
