@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { LayoutsRoutingModule } from './layouts-routing.module';
 import { LayoutsComponent } from './layouts.component';
+import { LayoutsRoutingModule } from './layouts-routing.module';
 import { NavigationComponent } from "../navigation/navigation.component";
 import { AngularMaterialModule } from "../../angular-material/angular-material.module";
 
