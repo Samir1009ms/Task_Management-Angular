@@ -16,7 +16,7 @@ export class IsAuthenticadetGuard implements CanActivate {
     return this.authService.isLoggedIn$.pipe(
       tap((isLogged) =>{
         if(!isLogged){
-          this.router.navigate(['login'])
+          this.router.navigate(['/login'])
         }
       })
     )
