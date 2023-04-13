@@ -45,6 +45,8 @@ export class TasksComponent implements OnInit {
     });
   }
 
+
+
   userNames() {
     this.tasks.forEach((task) => {
       const user = this.users.find((user) => {
@@ -53,6 +55,9 @@ export class TasksComponent implements OnInit {
       task.assignedTo._id = user ? user?.name : 'no name';
     });
   }
+
+
+
 
 
     deleteTask(id: string) {
