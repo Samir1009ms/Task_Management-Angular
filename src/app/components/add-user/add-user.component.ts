@@ -12,7 +12,7 @@ export class AddUserComponent {
   roles: string[] = ['admin', 'user'];
   selectedRole: string = this.roles[1];
 
-  constructor(private userService: UserService, private fb: FormBuilder,private router:Router) {}
+  constructor(private userService: UserService, private fb: FormBuilder, private router: Router) { }
 
   addUserForm = this.fb.group({
     name: ['', Validators.required],
@@ -27,13 +27,13 @@ export class AddUserComponent {
     }
 
     this.addUserForm.controls['isAdmin'].setValue(
-      this.selectedRole==='admin'? true:false
+      this.selectedRole === 'admin' ? true : false
     )
 
     // @ts-ignore
     this.userService.addUser(this.addUserForm.value).subscribe(
-      res=>{
-        this.router.navigate([' /users'])
+      res => {
+        this.router.navigate(['/users'])
       }
     )
   }

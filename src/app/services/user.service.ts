@@ -8,6 +8,7 @@ import { Observable } from "rxjs";
 })
 export class UserService {
   private baseUrl ='https://task-management-backend-eight.vercel.app/api'
+  private  mailUrl= 'http://localhost:5500/api/'
   constructor( private http:HttpClient) { }
 
   getUsers():Observable<UserModel[]>{
@@ -17,6 +18,6 @@ export class UserService {
     return this.http.get<UserModel>(`${this.baseUrl}/users${id}`)
   }
   addUser(user : UserModel):Observable<UserModel>{
-    return this.http.post<UserModel>(`${this.baseUrl}/register`,user)
+    return this.http.post<UserModel>(`${this.mailUrl}/register`,user)
   }
 }

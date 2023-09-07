@@ -1,17 +1,16 @@
 import { Directive, Input, TemplateRef, ViewContainerRef } from "@angular/core";
 import { AuthService } from '../services/auth.service';
-
 @Directive({
   selector: '[appHasRole]'
 })
-export class HasRoleDirective {
 
+export class HasRoleDirective {
   @Input()
-  set appHasRole(isAdmin: boolean){
-    if(this.authService.hasRole(isAdmin)){
-        this.viewContainerRef.createEmbeddedView(this.templateRef)
-    }else{
-       this.viewContainerRef.clear()
+  set appHasRole(isAdmin: boolean) {
+    if (this.authService.hasRole(isAdmin)) {
+      this.viewContainerRef.createEmbeddedView(this.templateRef)
+    } else {
+      this.viewContainerRef.clear()
     }
   }
 
@@ -20,5 +19,4 @@ export class HasRoleDirective {
     private viewContainerRef: ViewContainerRef,
     private authService: AuthService
   ) { }
-
 }

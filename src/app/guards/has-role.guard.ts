@@ -19,6 +19,8 @@ export class HasRoleGuard implements CanActivate {
       window.alert("admin is not")
     }
     return isAdmin ||false
+
+
   }
 
 }
