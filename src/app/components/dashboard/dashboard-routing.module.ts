@@ -4,9 +4,10 @@ import { DashboardComponent } from "./dashboard.component";
 import { IsAuthenticadetGuard } from "../../guards/is-authenticadet.guard";
 
 const routes: Routes = [
-  { path:'',
-  component:DashboardComponent,
-    canActivate:[IsAuthenticadetGuard]
+  {
+    path: '',
+    component: DashboardComponent,
+    // canActivate:[IsAuthenticadetGuard]
   }
 ];
 
