@@ -7,7 +7,7 @@ const routes: Routes = [
   {
     path: '',
     component: DashboardComponent,
-    // canActivate:[IsAuthenticadetGuard]
+    canActivate: [IsAuthenticadetGuard]
   }
 ];
 
