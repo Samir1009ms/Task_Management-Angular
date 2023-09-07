@@ -7,7 +7,7 @@ const routes: Routes = [
   {
     path: '',
     component: LayoutsComponent,
-    canActivate: [IsAuthenticadetGuard],
+    // canActivate: [IsAuthenticadetGuard],
 
     children: [
       {
